@@ -19,7 +19,7 @@ node("jmeter"){
                  script {
                      //determined_blackwell nombre del contenedor OWASP
                      sh "docker exec determined_blackwell"
-                     sh "mkdir /zap/wrk"
+                     //sh "mkdir /zap/wrk"
                         //  sh """
                         //      docker exec determined_blackwell \ 
                         //      mkdir /zap/wrk
