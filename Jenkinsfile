@@ -11,14 +11,15 @@ node("jmeter"){
          println("${workspace}")
          sh("pwd")
          sh("ls -la")
-         inputFile = input message: 'Upload file', parameters: [file(name: 'jmetertest.jmx')]
+         //inputFile = input message: 'Upload file', parameters: [file(name: 'jmetertest.jmx')]
          when {
                 environment name : 'GENERATE_REPORT', value: 'true'
           }
           steps {
                  script {
+                     //determined_blackwell nombre del contenedor OWASP
                          sh """
-                             docker exec owasp \
+                             docker exec determined_blackwell \ 
                              mkdir /zap/wrk
                          """
                      }
