@@ -18,10 +18,12 @@ node("jmeter"){
           steps {
                  script {
                      //determined_blackwell nombre del contenedor OWASP
-                         sh """
-                             docker exec determined_blackwell \ 
-                             mkdir /zap/wrk
-                         """
+                     sh "docker exec determined_blackwell"
+                     sh "mkdir /zap/wrk"
+                        //  sh """
+                        //      docker exec determined_blackwell \ 
+                        //      mkdir /zap/wrk
+                        //  """
                      }
            }
          sh "jmeter -Dhttp.proxyHost=192.168.56.10 -Dhttp.proxyPort=8092 -Dhttps.proxyHost=192.168.56.10 -Dhttps.proxyPort=8092 -n -t /tmp/workspace/pruebaNodo/jmetertest.jmx -l result.jtl"
