@@ -28,8 +28,4 @@ def target
 //         //    }
 //          sh "jmeter -Dhttp.proxyHost=192.168.56.10 -Dhttp.proxyPort=8092 -Dhttps.proxyHost=192.168.56.10 -Dhttps.proxyPort=8092 -n -t /tmp/workspace/pruebaNodo/jmetertest.jmx -l result.jtl"
 // }
-node("built-in"){
-
-     sh "docker exec determined_blackwell"
-
-}
+sh "docker exec determined_blackwell"
