@@ -1,5 +1,8 @@
+def scan_type
+def target
 node("jmeter"){
     cleanWs()
+    booleanParam defaultValue: true, name: 'GENERATE_REPORT'
     def inputFile = input message: 'Upload file', parameters: [file(name: 'jmetertest.jmx')]
     writeFile(file: 'jmetertest.jmx', text: inputFile.readToString())
     //new hudson.FilePath(new File("$workspace/jmetertest.jmx")).copyFrom(inputFile)
