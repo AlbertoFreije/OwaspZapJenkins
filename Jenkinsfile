@@ -11,15 +11,16 @@ node("jmeter"){
          println("${workspace}")
          sh("pwd")
          sh("ls -la")
+          sh "jmeter -Dhttp.proxyHost=192.168.56.10 -Dhttp.proxyPort=8092 -Dhttps.proxyHost=192.168.56.10 -Dhttps.proxyPort=8092 -n -t /tmp/workspace/pruebaNodo/jmetertest.jmx -l result.jtl"
          
-            stage('Pipeline Info') {
+            // stage('Pipeline Info') {
                     
                         
-                 echo "<--Parameter Initialization-->"
+            //      echo "<--Parameter Initialization-->"
 
-            }
+            // }
          //inputFile = input message: 'Upload file', parameters: [file(name: 'jmetertest.jmx')]
-         sh "jmeter -Dhttp.proxyHost=192.168.56.10 -Dhttp.proxyPort=8092 -Dhttps.proxyHost=192.168.56.10 -Dhttps.proxyPort=8092 -n -t /tmp/workspace/pruebaNodo/jmetertest.jmx -l result.jtl"
+        
     
 }
 
