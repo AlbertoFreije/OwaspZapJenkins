@@ -42,7 +42,7 @@ node("jmeter"){
         xml.each{
            item -> item.each{
 
-              item2 -> if(item2 == "alert"){
+              item2 -> if(item2 == "alerts"){
                   println(item2)
               }
            }
