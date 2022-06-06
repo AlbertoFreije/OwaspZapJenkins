@@ -42,8 +42,10 @@ node("jmeter"){
         xml.each{
            item -> item.each{
 
-              item2 -> 
-                  println(item2)
+              item2 -> item2.each{
+                  item3 -> println(item3)
+              }
+                 
               
            }
            }
