@@ -40,9 +40,14 @@ node("jmeter"){
         def xml = new XmlParser().parseText(file)
         //echo "${xml}"
         xml.each{
-           item -> if(item=="attributes"){
-              println(item)
+           item -> item.each{
+
+              item2 -> if(item2=="attributes"){
+                     println(item)
+              }
+               
+           }
            }
            
         }
-    }
+   
