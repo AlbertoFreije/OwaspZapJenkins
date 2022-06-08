@@ -55,11 +55,11 @@ node("jmeter"){
       
       //print prettyPrint(toJson(xml))
 
-      // xml.each{ key, val -> 
+      xml.each{ key, val -> 
 
-      //    println "Imprimiendo: $key variable $val"
+         println "Imprimiendo: $key variable $val"
 
-      // }
+      }
            
         }
    
