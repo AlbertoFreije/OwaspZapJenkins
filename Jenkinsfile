@@ -43,7 +43,7 @@ node("jmeter"){
            item -> item.each{
 
               item2 -> item2.each{
-                  item3 -> println(item3)
+                  item3 -> println("$item3.key")
               }
                  
               
