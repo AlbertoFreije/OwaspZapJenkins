@@ -1,3 +1,5 @@
+import static groovy.json.JsonOutput.*
+
 def mailBody = "Este es el informe de vulnerabilidades encontradas solicitado"
 def mailSubject = "INFORME VULNERABILIDADES"
 def mailFrom = 'AlbertoFreijeCarballo@gmail.com'
@@ -50,7 +52,7 @@ node("jmeter"){
       //      }
       //    }
 
-      import static groovy.json.JsonOutput.*
+      
       print prettyPrint(toJson(xml))
 
       xml.each{ key, val -> 
