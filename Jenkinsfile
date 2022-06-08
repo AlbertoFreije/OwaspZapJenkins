@@ -39,16 +39,22 @@ node("jmeter"){
         def file = readFile "owasp-quick-scan-report.xml"
         def xml = new XmlParser().parseText(file)
         //echo "${xml}"
-        xml.each{
-           item -> item.each{
+      //   xml.each{
+      //      item -> item.each{
 
-              item2 -> item2.each{
-                  item3 -> println("$item3.key")
-              }
+      //         item2 -> item2.each{
+      //             item3 -> println("$item3.key")
+      //         }
                  
               
-           }
-           }
+      //      }
+      //    }
+
+      xml.each{ key, val -> 
+
+         println "Imprimiendo: $key val $val"
+
+      }
            
         }
    
