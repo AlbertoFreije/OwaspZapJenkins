@@ -52,7 +52,7 @@ node("jmeter"){
 
       xml.each{ key, val -> 
 
-         println "Imprimiendo: $key val $val"
+         println "Imprimiendo: $key variable $val"
 
       }
            
