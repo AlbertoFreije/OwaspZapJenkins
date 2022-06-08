@@ -50,6 +50,9 @@ node("jmeter"){
       //      }
       //    }
 
+      import static groovy.json.JsonOutput.*
+      print prettyPrint(toJson(xml))
+
       xml.each{ key, val -> 
 
          println "Imprimiendo: $key variable $val"
