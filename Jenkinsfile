@@ -123,8 +123,8 @@ node("jmeter"){
        unstash 'prueba'
        sh("ls -la")
        sh("pwd") 
-       def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
-       writeFile(file: nombreXML, text: inputFile.readToString())
+      //  def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+      //  writeFile(file: nombreXML, text: inputFile.readToString())
        println("aqui1")
        sh("ls -la")
        sh("pwd")
