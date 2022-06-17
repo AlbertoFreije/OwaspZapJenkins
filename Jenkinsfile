@@ -4,7 +4,7 @@ def mailBody = "Este es el informe de vulnerabilidades encontradas solicitado"
 def mailSubject = "INFORME VULNERABILIDADES"
 def mailFrom = 'AlbertoFreijeCarballo@gmail.com'
 def mailTo = 'Alberto.Freije@Ricoh.es'
-def nombreXML="archivo.xml"
+def nombreXML = "owasp-quick-scan-report.xml"
 
 @NonCPS
 def sluper(xmlData){
@@ -17,7 +17,7 @@ def sluper(xmlData){
     adocSource += ":doctype: book\n"
     adocSource += ":hardbreaks:\n"
     adocSource += ":experimental:\n"
-    adocSource += ":pdf-stylesdir: /tmp/workspace/PruebaXml/templates-main/Ricoh \n"
+    adocSource += ":pdf-stylesdir: /tmp/workspace/PruebaNodo/templates-main/Ricoh \n"
     adocSource += ":pdf-style: template.yml \n"
     adocSource += ":Ruta_Base: ..\\ \n"
     adocSource += ":imagesdir: .\\ \n"
@@ -119,8 +119,27 @@ node("jmeter"){
         }
     }
     node("jmeter"){
-        unstash 'prueba'
-        sh("ls -la")
-        sh("pwd")
+       cleanWs()
+       unstash 'prueba'
+       sh("ls -la")
+       sh("pwd") 
+       def inputFile = input message: 'Upload file', parameters: [file(name: nombreXML)]
+       writeFile(file: nombreXML, text: inputFile.readToString())
+       println("aqui1")
+       sh("ls -la")
+       sh("pwd")
+       def xmlContent = readFile( file: "${WORKSPACE}/" + nombreXML)
+       def adocSource = sluper(xmlContent)
+       writeFile(file: "informeAlertas.adoc", text: "${adocSource}")
+       sh("wget https://github.com/AlbertoFreije/templates/archive/main.zip")
+       sh("unzip main.zip")
+       sh("asciidoctor-pdf informeAlertas.adoc -o informeAlertas.pdf")
+       emailext (
+         attachmentsPattern: '**/informeAlertas.pdf',
+         subject: mailSubject,
+         body: mailBody,
+         from: mailFrom,
+         to: mailTo
+       )
     }
    
